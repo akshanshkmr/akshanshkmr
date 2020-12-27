@@ -36,7 +36,7 @@ Let me know yours! <br />
 - 💻 Python Scripts 
 - ✨ REST APIs
 - 😎 Ethical Hacking Utilities
-- 📱 Mobile App development, with Flutter 
+- 📱  Flutter Apps 
 
 #### My GitHub Stats:
 
