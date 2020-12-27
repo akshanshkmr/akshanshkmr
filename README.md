@@ -19,7 +19,6 @@
   <img align="left" alt="Akshansh's Visitor Counter" src="https://visitor-badge.glitch.me/badge?page_id=akshanshkmr.akshanshkmr" />
 </a>
 <br />
-<br />
 
 I am a full stack developer, i love to express my creativity through my code <br />
 I try to write code for everyday problems, that can be solved programatically <br />
@@ -38,7 +37,6 @@ Let me know yours! <br />
 - 😎 Ethical Hacking Utilities
 - 📱  Mobile App development, with Flutter 
 
-<br />
 #### My GitHub Stats:
 
 <p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=akshanshkmr&show_icons=true&theme=gotham" alt="akshanshkmr" />
