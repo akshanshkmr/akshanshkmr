@@ -21,11 +21,11 @@
 <br />
 <br />
 
+<img align="right" alt="GIF" src="https://github.com/abhisheknaiidu/abhisheknaiidu/blob/master/code.gif?raw=true" width="500" height="320" />
+
 I am a full stack developer, i love to express my creativity through my code <br />
 I try to write code for everyday problems, that can be solved programatically <br />
 Let me know yours! <br />
-
-<img align="right" alt="GIF" src="https://github.com/abhisheknaiidu/abhisheknaiidu/blob/master/code.gif?raw=true" width="500" height="320" />
 
 - 📫 How to reach me: [@akshanshkmr](https://twitter.com/akshanshkmr)
 - 💬 Ask me about: Coding problems
@@ -40,6 +40,4 @@ Let me know yours! <br />
 
 #### My GitHub Stats:
 
-<p align="center">
-<br />
-<img src="https://github-readme-stats.vercel.app/api?username=akshanshkmr&show_icons=true&theme=gotham" alt="akshanshkmr" />
+<p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=akshanshkmr&show_icons=true&theme=gotham" alt="akshanshkmr" />
