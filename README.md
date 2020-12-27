@@ -34,7 +34,7 @@ Let me know yours! <br />
 #### Some of my Interest Areas are:
 
 - 💻 Python Scripts 
-- ✨ Rest APIs
+- ✨ REST APIs
 - 😎 Ethical Hacking Utilities
 - 📱 Mobile App development, with Flutter 
 
