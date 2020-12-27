@@ -20,7 +20,7 @@
 </a>
 <br />
 
-<img align="right" alt="GIF" src="https://github.com/abhisheknaiidu/abhisheknaiidu/blob/master/code.gif?raw=true" width="500" height="320" />
+<img align="right" alt="GIF" src="https://github.com/abhisheknaiidu/abhisheknaiidu/blob/master/code.gif?raw=true" width="450" height="288" />
 
 I am a full stack developer, i love to express my creativity through my code <br />
 I try to write code for everyday problems, that can be solved programatically <br />
