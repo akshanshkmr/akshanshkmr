@@ -1,14 +1,19 @@
-### Hi there 👋
+### Hi there, I am Akshansh Kumar 👋 
 
-#### You have reched akshanshkmr
+I am a full stack developer, i love to express my creativity through my code
+I try to write code for everyday problems, that can be solved programatically
+Let me know yours!
 
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
 - 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
+- 💬 Ask me about: Coding problems|Hacking Stuff|
+- ⚡ Fun fact: You can find me on google's Bug Hunter Hall of Fame
+               https://bughunter.withgoogle.com/rank/hm/1
+
+#### Some of my Interest Areas are:
+
+- 💻 Python Scripts 
+- ✨ Rest APIs
+- 😎 Ethical Hacking Utilities
+- 📱  Mobile App development, with Flutter 
+
+<p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=akshanshkmr&show_icons=true&theme=gotham" alt="akshanshkmr" />
