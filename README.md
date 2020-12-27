@@ -15,9 +15,6 @@
 <a href="https://twitter.com/akshanshkmr">
   <img align="left" alt="Akshansh Kumar | Twitter" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg" />
 </a>
-<a href="https://twitter.com/akshanshkmr">
-  <img align="left" alt="Akshansh Kumar | Visitor Counter" width="22px" src="https://visitor-badge.glitch.me/badge?page_id=akshanshkmr.akshanshkmr" />
-</a>
 ![](https://visitor-badge.glitch.me/badge?page_id=akshanshkmr.akshanshkmr)
 <br />
 
