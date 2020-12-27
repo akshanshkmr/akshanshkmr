@@ -7,7 +7,7 @@
   <img align="left" alt="Akshansh's Facebook" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/facebook.svg" />
 </a>
 <a href="https://www.instagram.com/akshanshkmr/">
-  <img align="left" alt="Akshansh's Instagram" width="22px" src="https://www.logo.wine/a/logo/Instagram/Instagram-Glyph-Color-Logo.wine.svg" />
+  <img align="left" alt="Akshansh's Instagram" width="22px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" />
 </a>
 <a href="https://www.linkedin.com/in/akshanshkmr/">
   <img align="left" alt="Akshansh's LinkedIN" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/linkedin.svg" />
@@ -36,6 +36,6 @@ Let me know yours! <br />
 - 😎 Ethical Hacking Utilities
 - 📱  Mobile App development, with Flutter 
 
-### My GitHub Stats
+#### My GitHub Stats:
 
 <p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=akshanshkmr&show_icons=true&theme=gotham" alt="akshanshkmr" />
