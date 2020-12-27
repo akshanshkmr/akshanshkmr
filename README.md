@@ -40,4 +40,6 @@ Let me know yours! <br />
 
 #### My GitHub Stats:
 
-<p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=akshanshkmr&show_icons=true&theme=gotham" alt="akshanshkmr" />
+<p align="center">
+<br />
+<img src="https://github-readme-stats.vercel.app/api?username=akshanshkmr&show_icons=true&theme=gotham" alt="akshanshkmr" />
