@@ -1,6 +1,6 @@
 ### Hi there 👋
 
-**akshanshkmr/akshanshkmr** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+# You have reched akshanshkmr
 
 Here are some ideas to get you started:
 
