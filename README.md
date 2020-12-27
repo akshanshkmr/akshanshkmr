@@ -4,23 +4,25 @@ I am a full stack developer, i love to express my creativity through my code
 I try to write code for everyday problems, that can be solved programatically
 Let me know yours!
 
-<a href="https://discordapp.com/users/443409557427847172/">
-  <img align="left" alt="Akshansh's Discord" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/discord.svg" />
+<a href="https://www.instagram.com/akshanshkmr/">
+  <img align="left" alt="Akshansh's Instagram" width="22px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" />
+</a>
+<a href="https://m.facebook.com/akshanshkmr">
+  <img align="left" alt="Akshansh's Facebook" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/facebook.svg" />
 </a>
 <a href="https://twitter.com/akshanshkmr">
-  <img align="left" alt="Abhishek Naidu | Twitter" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg" />
+  <img align="left" alt="Akshansh Kumar | Twitter" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg" />
 </a>
 <a href="https://www.linkedin.com/in/akshanshkmr/">
   <img align="left" alt="Akshansh's LinkedIN" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/linkedin.svg" />
 </a>
-<a href="https://open.spotify.com/user/e90fe4zsndbm6xoe2t7t8kogf?si=WaLKpwvWTle0btle2qPb6g">
+<a href="https://app.codesignal.com/profile/akshanshkmr">
   <img align="left" alt="Akshansh's CodeSignal" width="22px" src="https://pathrise-website-guide-wp.s3.us-west-1.amazonaws.com/guides/wp-content/uploads/2019/06/28190511/xPDfUHI1_400x400.jpg" />
 </a>
 
 ![](https://visitor-badge.glitch.me/badge?page_id=abhisheknaiidu.abhisheknaiidu)
 
 <br />
-
 
 - 📫 How to reach me: [@akshanshkmr](https://twitter.com/akshanshkmr)
 - 💬 Ask me about: Coding problems
@@ -32,5 +34,7 @@ Let me know yours!
 - ✨ Rest APIs
 - 😎 Ethical Hacking Utilities
 - 📱  Mobile App development, with Flutter 
+
+### My GitHub Stats
 
 <p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=akshanshkmr&show_icons=true&theme=gotham" alt="akshanshkmr" />
