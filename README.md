@@ -7,7 +7,7 @@
   <img align="left" alt="Akshansh's Facebook" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/facebook.svg" />
 </a>
 <a href="https://www.instagram.com/akshanshkmr/">
-  <img align="left" alt="Akshansh's Instagram" width="22px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" />
+  <img align="left" alt="Akshansh's Instagram" width="22px" src="https://www.logo.wine/a/logo/Instagram/Instagram-Glyph-Color-Logo.wine.svg" />
 </a>
 <a href="https://www.linkedin.com/in/akshanshkmr/">
   <img align="left" alt="Akshansh's LinkedIN" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/linkedin.svg" />
@@ -15,7 +15,9 @@
 <a href="https://twitter.com/akshanshkmr">
   <img align="left" alt="Akshansh Kumar | Twitter" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg" />
 </a>
-
+<a href="https://twitter.com/akshanshkmr">
+  <img align="left" alt="Akshansh Kumar | Visitor Counter" width="22px" src="https://visitor-badge.glitch.me/badge?page_id=akshanshkmr.akshanshkmr" />
+</a>
 ![](https://visitor-badge.glitch.me/badge?page_id=akshanshkmr.akshanshkmr)
 <br />
 
