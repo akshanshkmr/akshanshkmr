@@ -40,6 +40,7 @@ Let me know yours! <br />
 
 #### My GitHub Stats:
 
-<p align="center"> 
+![stats](https://github-readme-stats.vercel.app/api?username=akshanshkmr&show_icons=true&theme=react)
+<!-- <p align="center"> 
 <img src="https://github-readme-stats.vercel.app/api?username=akshanshkmr&show_icons=true&theme=react" alt="akshanshkmr" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=akshanshkmr&theme=react&layout=compact" alt="akshanshkmr" />
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=akshanshkmr&theme=react&layout=compact" alt="akshanshkmr" /> -->
