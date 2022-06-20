@@ -1,10 +1,10 @@
-### Hi there, I am Akshansh Kumar <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25px">
+### Hi there, I am Akshansh Kumar <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25px" height="25px">
 
 <a href="https://app.codesignal.com/profile/akshanshkmr">
   <img align="left" alt="Akshansh's CodeSignal" width="22px" src="https://pathrise-website-guide-wp.s3.us-west-1.amazonaws.com/guides/wp-content/uploads/2019/06/28190511/xPDfUHI1_400x400.jpg" />
 </a>
 <a href="https://m.facebook.com/akshanshkmr">
-  <img align="left" alt="Akshansh's Facebook" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/facebook.svg" />
+  <img align="left" alt="Akshansh's Facebook" width="22px" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/768px-Facebook_f_logo_%282021%29.svg.png?20210818083032" />
 </a>
 <a href="https://www.instagram.com/akshanshkmr/">
   <img align="left" alt="Akshansh's Instagram" width="22px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" />
