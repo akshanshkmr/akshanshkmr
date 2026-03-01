@@ -92,4 +92,4 @@ Designed and published custom UI components to the Streamlit open-source ecosyst
 
 &nbsp;
 
-[📄 View Resume](resume/resume) &nbsp;&nbsp;&nbsp; [⬇️ Download PDF](resume/resume.pdf)
+[📄 View Resume](resume/resume.md) &nbsp;&nbsp;&nbsp; [⬇️ Download PDF](resume/resume.pdf)
