@@ -6,6 +6,7 @@ description: Senior Software Engineer · Python & React · D. E. Shaw
 markdown: GFM
 header_pages:
   - resume/resume.md
+  - resume/resume.pdf
 
 plugins:
   - jekyll-readme-index
@@ -13,5 +14,3 @@ plugins:
 relative_links:
   enabled: true
   collections: true
-include:
-  - resume/resume.md
