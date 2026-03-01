@@ -1,3 +1,8 @@
+---
+layout: default
+title: Akshansh Kumar
+---
+
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
   <div>
     <h2 style="margin-bottom: 0.3rem;">Hi, I'm Akshansh 👋</h2>
