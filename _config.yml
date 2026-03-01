@@ -8,6 +8,7 @@ header_pages:
   - resume/resume.md
 
 plugins:
+  - jekyll-readme-index
   - jekyll-relative-links
 relative_links:
   enabled: true
