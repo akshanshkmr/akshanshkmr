@@ -6,8 +6,23 @@ markdown: GFM
 header_pages:
   - resume/resume.md
 
-nav_pages:
-  - resume/resume.pdf
+minima:
+  nav_pages:
+    - resume/resume.md
+    - resume/resume.pdf
+  social_links:
+    - title: LinkedIn
+      icon: linkedin
+      url: "https://linkedin.com/in/akshanshkmr"
+    - title: GitHub
+      icon: github
+      url: "https://github.com/akshanshkmr"
+    - title: Email
+      icon: email
+      url: "mailto:akshanshkmr821@gmail.com"
+    - title: Portfolio
+      icon: portfolio
+      url: "https://akshanshkmr.github.io/akshanshkmr/"
 
 plugins:
   - jekyll-readme-index
