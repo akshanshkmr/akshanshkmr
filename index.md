@@ -82,8 +82,5 @@ Designed and published custom UI components to the Streamlit open-source ecosyst
 [![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:akshanshkmr821@gmail.com)
 [![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat-square&logo=github&logoColor=white)](https://akshanshkmr.github.io/akshanshkmr/)
 
-<a href="https://www.buymeacoffee.com/akshanshkmr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" width="250"></a>
 
-&nbsp;
-
-[📄 View Resume](resume/resume.md) &nbsp;&nbsp;&nbsp; [⬇️ Download PDF](resume/resume.pdf)
+[![Download Resume](https://img.shields.io/badge/Download_Resume-FFDD00?style=flat-square&logo=readthedocs&logoColor=black)](resume/resume.pdf)
