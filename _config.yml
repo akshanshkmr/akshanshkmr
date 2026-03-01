@@ -6,6 +6,9 @@ markdown: GFM
 header_pages:
   - resume/resume.md
 
+nav_pages:
+  - resume/resume.pdf
+
 plugins:
   - jekyll-readme-index
   - jekyll-relative-links
