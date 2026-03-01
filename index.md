@@ -44,15 +44,6 @@ I build mission-critical full-stack tools for the risk team at D. E. Shaw — 5+
 
 ---
 
-### Interest Areas
-
-- 💻 Python Scripts
-- ✨ REST APIs
-- 😎 Ethical Hacking Utilities
-- 📱 Flutter Apps
-
----
-
 ### Featured Work
 
 **🔴 Session Replay Tool** · *2024*
@@ -85,8 +76,11 @@ Designed and published custom UI components to the Streamlit open-source ecosyst
 ---
 
 ### Connect
-
-<a href="https://www.linkedin.com/in/akshanshkmr/"><img alt="LinkedIn" width="22px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" /></a>&nbsp;<a href="https://twitter.com/akshanshkmr"><img alt="Twitter" width="22px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/twitter/twitter-original.svg" /></a>&nbsp;<a href="https://www.instagram.com/akshanshkmr/"><img alt="Instagram" width="22px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/instagram/instagram-original.svg" /></a>&nbsp; [LinkedIn](https://linkedin.com/in/akshanshkmr) &nbsp;·&nbsp; [GitHub](https://github.com/akshanshkmr) &nbsp;·&nbsp; [akshanshkmr821@gmail.com](mailto:akshanshkmr821@gmail.com)
+  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/akshanshkmr)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/akshanshkmr)
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:akshanshkmr821@gmail.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat-square&logo=github&logoColor=white)](https://akshanshkmr.github.io/akshanshkmr/)
 
 <a href="https://www.buymeacoffee.com/akshanshkmr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" width="250"></a>
 
