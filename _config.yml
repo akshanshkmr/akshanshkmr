@@ -1,0 +1,14 @@
+theme: minima
+title: Akshansh Kumar
+description: Senior Software Engineer · Python & React · D. E. Shaw
+markdown: GFM
+header_pages:
+  - resume/resume.md
+
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - resume/resume.md
