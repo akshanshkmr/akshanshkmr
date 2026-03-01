@@ -80,20 +80,15 @@ Designed and published custom UI components to the Streamlit open-source ecosyst
 
 ### GitHub Activity
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=akshanshkmr&show_icons=true&hide_border=true&hide_title=true&count_private=true)
+![GitHub Stats](profile/stats.svg)
 
 ---
 
 ### Connect
 
-<a href="https://www.linkedin.com/in/akshanshkmr/"><img alt="LinkedIn" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/linkedin.svg" /></a>&nbsp;
-<a href="https://twitter.com/akshanshkmr"><img alt="Twitter" width="22px" src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg" /></a>&nbsp;
-<a href="https://www.instagram.com/akshanshkmr/"><img alt="Instagram" width="22px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" /></a>&nbsp;
-<a href="https://app.codesignal.com/profile/akshanshkmr"><img alt="CodeSignal" width="22px" src="https://pathrise-website-guide-wp.s3.us-west-1.amazonaws.com/guides/wp-content/uploads/2019/06/28190511/xPDfUHI1_400x400.jpg" /></a>
+<a href="https://www.linkedin.com/in/akshanshkmr/"><img alt="LinkedIn" width="22px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" /></a>&nbsp;<a href="https://twitter.com/akshanshkmr"><img alt="Twitter" width="22px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/twitter/twitter-original.svg" /></a>&nbsp;<a href="https://www.instagram.com/akshanshkmr/"><img alt="Instagram" width="22px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/instagram/instagram-original.svg" /></a>&nbsp; [LinkedIn](https://linkedin.com/in/akshanshkmr) &nbsp;·&nbsp; [GitHub](https://github.com/akshanshkmr) &nbsp;·&nbsp; [akshanshkmr821@gmail.com](mailto:akshanshkmr821@gmail.com)
 
-[LinkedIn](https://linkedin.com/in/akshanshkmr) &nbsp;·&nbsp; [GitHub](https://github.com/akshanshkmr) &nbsp;·&nbsp; [akshanshkmr821@gmail.com](mailto:akshanshkmr821@gmail.com)
-
-<a href="https://www.buymeacoffee.com/akshanshkmr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+<a href="https://www.buymeacoffee.com/akshanshkmr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" width="250"></a>
 
 &nbsp;
 
