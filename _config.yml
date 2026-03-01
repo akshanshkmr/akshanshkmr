@@ -1,16 +1,15 @@
 theme: minima
 title: Akshansh Kumar
-baseurl: "/akshanshkmr"
-url: "https://akshanshkmr.github.io"
 description: Senior Software Engineer · Python & React · D. E. Shaw
 markdown: GFM
+
 header_pages:
   - resume/resume.md
-  - resume/resume.pdf
 
 plugins:
   - jekyll-readme-index
   - jekyll-relative-links
+
 relative_links:
   enabled: true
   collections: true
