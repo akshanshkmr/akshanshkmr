@@ -16,7 +16,7 @@ Senior Software Engineer with 6 years at D. E. Shaw building high-reliability in
 
 | Languages & Frameworks | Python, FastAPI, JavaScript, ReactJS |
 | Data & Visualization | Pandas, Plotly, Streamlit |
-| AI & Search | RAG, FAISS, GPT-4.5, Claude SDK |
+| AI & Search | RAG, FAISS, Claude SDK |
 | Databases | MongoDB, SQL |
 | Testing | Cypress (2,000+ automated tests) |
 | Infrastructure | Linux, Docker, Git, Kafka, CI/CD|
