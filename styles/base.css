@@ -1,3 +1,4 @@
+/* ── Theme Variables ──────────────────────── */
 :root {
   --accent: #2563eb;
   --bg: #f0f2f5;
@@ -37,6 +38,7 @@
   --sidebar-muted: #64748b;
 }
 
+/* ── Reset ───────────────────────────────── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -48,7 +50,7 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* Avatar */
+/* ── Avatar ──────────────────────────────── */
 .avatar {
   width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
   border: 2.5px solid var(--accent); flex-shrink: 0;
@@ -59,144 +61,24 @@ body {
   display: flex; align-items: center; justify-content: center;
   font-size: 24px; font-weight: 700; flex-shrink: 0;
   border: 2.5px solid var(--accent);
-}
-.avatar-sm { width: 56px; height: 56px; font-size: 18px; }
-.avatar-lg { width: 90px; height: 90px; font-size: 30px; border-width: 3px; }
-
-/* Page */
-.page {
-  max-width: var(--page-w);
-  margin: 72px auto 40px;
-  background: var(--page-bg);
-  border-radius: 6px;
-  box-shadow: 0 1px 8px var(--shadow);
-  transition: background 0.3s, box-shadow 0.3s;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
-/* Section */
-.section { margin-top: 14px; }
-.section-title {
-  font-size: 11px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 1.2px;
-  color: var(--accent);
-  border-bottom: 1.5px solid var(--accent);
-  padding-bottom: 3px; margin-bottom: 8px;
-}
-
-/* Content blocks */
-.summary { font-size: 10.5px; color: var(--text-secondary); line-height: 1.55; }
-
+/* ── Generic Grid (for non-skills table sections) ── */
 .skills-grid { display: grid; grid-template-columns: 155px 1fr; gap: 2px 12px; font-size: 10px; }
 .skills-grid .label { font-weight: 600; color: var(--text-secondary); padding: 2px 0; }
 .skills-grid .value { color: var(--muted); padding: 2px 0; }
+.avatar-sm { width: 56px; height: 56px; font-size: 18px; }
+.avatar-lg { width: 90px; height: 90px; font-size: 30px; border-width: 3px; }
 
-.job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
-.job-header .role { font-weight: 700; font-size: 11px; color: var(--text); }
-.job-header .date { font-size: 10px; color: var(--light); white-space: nowrap; }
-.company { font-size: 10px; color: var(--muted); margin-bottom: 8px; }
-.proj { margin-bottom: 8px; }
-.proj:last-child { margin-bottom: 0; }
-.proj-title { font-weight: 600; font-size: 10.5px; color: var(--text); }
-.proj-desc { color: var(--text-secondary); font-size: 10px; line-height: 1.5; margin-top: 1px; }
-
-.edu-table { width: 100%; border-collapse: collapse; font-size: 10px; }
-.edu-table th { text-align: left; font-weight: 600; color: var(--muted); padding: 3px 8px 3px 0; border-bottom: 1px solid var(--border); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.5px; }
-.edu-table td { padding: 4px 8px 4px 0; color: var(--text-secondary); border-bottom: 1px solid var(--border-light); }
-.edu-table td:first-child { font-weight: 500; }
-.edu-table .note { color: var(--light); font-size: 9.5px; }
-
-.ach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 24px; font-size: 10px; color: var(--text-secondary); }
-.ach-item { display: flex; align-items: baseline; gap: 6px; }
-.ach-item::before { content: '▸'; color: var(--accent); font-size: 9px; flex-shrink: 0; }
-.ach-year { color: var(--light); font-size: 9px; white-space: nowrap; }
-
-.generic-list { font-size: 10px; color: var(--text-secondary); }
-.g-item { display: flex; align-items: baseline; gap: 6px; margin-bottom: 3px; }
-.g-item::before { content: '▸'; color: var(--accent); font-size: 9px; flex-shrink: 0; }
-.g-year { color: var(--light); font-size: 9px; white-space: nowrap; }
-.generic-para { font-size: 10.5px; color: var(--text-secondary); line-height: 1.55; }
-
-.status { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 14px; }
-
-@page {
-  size: A4 portrait;
-  margin: 0;
-}
-
-@media print {
-  html, body {
-    margin: 0; padding: 0;
-    background: #fff !important;
-    color: #1a1a1a !important;
-  }
-
-  .toolbar { display: none !important; }
-  .page-label { display: none !important; }
-  .page-count-badge { display: none !important; }
-
-  #wrapper {
-    gap: 0; padding: 0;
-  }
-
-  .page-sheet {
-    box-shadow: none;
-    border-radius: 0;
-    background: #fff !important;
-    page-break-after: always;
-    break-after: page;
-  }
-
-  .page-sheet:last-child {
-    page-break-after: avoid;
-    break-after: avoid;
-  }
-
-  /* Force light colors */
-  .header h1, .job-header .role, .proj-title { color: #1a1a1a !important; }
-  .summary, .proj-desc, .edu-table td, .ach-grid, .generic-list, .generic-para { color: #333 !important; }
-  .skills-grid .label { color: #333 !important; }
-  .skills-grid .value, .contact, .company { color: #555 !important; }
-  .job-header .date, .edu-table .note, .ach-year, .g-year { color: #888 !important; }
-  .edu-table th { color: #555 !important; border-color: #ddd !important; }
-  .edu-table td { border-color: #eee !important; }
-}
-
-/* ── A4 Multi-Page Preview ────────────────── */
+/* ── A4 Page Preview Layout ──────────────── */
 #wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
   padding: 20px 0 40px;
-}
-
-.page-sheet {
-  width: 210mm;
-  height: 297mm;
-  overflow: hidden;
-  position: relative;
-  background: var(--page-bg);
-  border-radius: 6px;
-  box-shadow: 0 1px 8px var(--shadow);
-  transition: background 0.3s, box-shadow 0.3s;
-}
-
-.page-sheet-inner {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-}
-
-.page-label {
-  position: absolute;
-  bottom: 8px;
-  right: 12px;
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--light);
-  font-family: 'Inter', system-ui, sans-serif;
-  opacity: 0.5;
+  overflow: visible;
 }
 
 .page-count-badge {
@@ -205,19 +87,198 @@ body {
   font-weight: 600;
   color: var(--muted);
   font-family: 'Inter', system-ui, sans-serif;
-  padding: 4px 0;
+  padding: 4px 0 12px;
+}
+.page-count-badge.warn { color: #ef4444; }
+
+.page-frame {
+  width: 210mm;
+  position: relative;
+  overflow: visible;
+  background: var(--page-bg);
+  border-radius: 6px;
+  box-shadow: 0 1px 8px var(--shadow);
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
-.page-count-badge.warn {
-  color: #ef4444;
-}
-
-/* The .page class is now used inside .page-sheet-inner */
 .page {
-  max-width: none;
   width: 100%;
-  margin: 0;
-  box-shadow: none;
-  border-radius: 0;
+  overflow: visible;
   background: transparent;
+}
+
+/* ── Page Break Overlays ─────────────────── */
+.page-break-line {
+  position: absolute;
+  left: 0; right: 0;
+  height: 24px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.15;
+  transition: opacity 0.2s;
+  cursor: default;
+  pointer-events: auto;
+}
+.page-break-line:hover {
+  opacity: 1;
+  background: var(--bg);
+}
+.page-break-line::before,
+.page-break-line::after {
+  content: '';
+  flex: 1;
+  height: 1.5px;
+  background: #ef4444;
+}
+.page-break-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: #ef4444;
+  font-family: 'Inter', system-ui, sans-serif;
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+/* ── Section ─────────────────────────────── */
+.section { margin-top: 14px; }
+.section-title {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.2px;
+  color: var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  padding-bottom: 3px; margin-bottom: 8px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── Summary ─────────────────────────────── */
+.summary { font-size: 10.5px; color: var(--text-secondary); line-height: 1.55; }
+
+/* ── Skills ───────────────────────────────── */
+.skills-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 5px;
+  align-items: center;
+  font-size: 10px;
+}
+.skill-category {
+  font-weight: 500;
+  color: var(--light);
+  font-size: 9px;
+  letter-spacing: 0.3px;
+  margin-left: 6px;
+  font-style: italic;
+}
+.skill-category:first-child { margin-left: 0; }
+.skill-pill {
+  display: inline-block;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
+  border-radius: 10px;
+  padding: 1.5px 9px;
+  font-size: 9px;
+  font-weight: 500;
+  white-space: nowrap;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── Experience ──────────────────────────── */
+.job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+.job-header .role { font-weight: 700; font-size: 11px; color: var(--text); }
+.job-header .date { font-size: 10px; color: var(--light); white-space: nowrap; }
+.company { font-size: 10px; color: var(--muted); margin-bottom: 8px; }
+.projects { padding-left: 14px; border-left: 1.5px solid var(--border-light); margin-left: 4px; }
+.proj { margin-bottom: 8px; }
+.proj:last-child { margin-bottom: 0; }
+.proj-title { font-weight: 600; font-size: 10.5px; color: var(--text); }
+.proj-desc { color: var(--text-secondary); font-size: 10px; line-height: 1.5; margin-top: 1px; }
+
+/* ── Education ────────────────────────────── */
+.edu-list { font-size: 10px; }
+.edu-entry {
+  border-left: 2.5px solid var(--accent);
+  padding-left: 12px;
+  margin-bottom: 8px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.edu-entry:last-child { margin-bottom: 0; }
+.edu-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.edu-degree { font-weight: 600; font-size: 10.5px; color: var(--text); }
+.edu-year { font-size: 9.5px; color: var(--light); white-space: nowrap; }
+.edu-detail { font-size: 9.5px; color: var(--muted); margin-top: 1px; }
+
+/* ── Achievements Grid ───────────────────── */
+.ach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 24px; font-size: 10px; color: var(--text-secondary); }
+.ach-item { display: flex; align-items: baseline; gap: 6px; }
+.ach-item::before { content: '▸'; color: var(--accent); font-size: 9px; flex-shrink: 0; }
+.ach-year { color: var(--light); font-size: 9px; white-space: nowrap; }
+
+/* ── Generic Section ─────────────────────── */
+.generic-list { font-size: 10px; color: var(--text-secondary); }
+.g-item { display: flex; align-items: baseline; gap: 6px; margin-bottom: 3px; }
+.g-item::before { content: '▸'; color: var(--accent); font-size: 9px; flex-shrink: 0; }
+.g-year { color: var(--light); font-size: 9px; white-space: nowrap; }
+.generic-para { font-size: 10.5px; color: var(--text-secondary); line-height: 1.55; }
+
+/* ── Status ───────────────────────────────── */
+.status { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 14px; }
+
+/* ── Print ────────────────────────────────── */
+@page {
+  size: A4 portrait;
+  margin: 5mm;
+}
+
+@media print {
+  html, body, #wrapper, .page-frame, .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  html, body {
+    padding: 0 !important;
+    background: #fff !important;
+    color: #1a1a1a !important;
+  }
+
+  #wrapper {
+    display: block !important;
+    padding: 0 !important;
+    align-items: unset !important;
+  }
+
+  .page-frame {
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+  }
+
+  .toolbar {
+    display: none !important;
+  }
+
+  .page-count-badge { display: none !important; }
+  .page-break-line { display: none !important; }
+
+  .header h1, .job-header .role, .proj-title { color: #1a1a1a !important; }
+  .summary, .proj-desc, .edu-table td, .ach-grid, .generic-list, .generic-para { color: #333 !important; }
+  .skills-grid .label { color: #333 !important; }
+  .skills-grid .value, .contact, .company { color: #555 !important; }
+  .job-header .date, .edu-table .note, .ach-year, .g-year { color: #888 !important; }
+  .edu-table th { color: #555 !important; border-color: #ddd !important; }
+  .edu-table td { border-color: #eee !important; }
 }

@@ -99,9 +99,9 @@ var ResumeParser = (function () {
 
   function renderContact(meta) {
     var h = '';
-    ['email', 'phone', 'location'].forEach(function (k) {
-      if (meta[k]) h += '<span>' + meta[k] + '</span>';
-    });
+    if (meta.email) h += '<a href="mailto:' + meta.email + '">' + meta.email + '</a>';
+    if (meta.phone) h += '<a href="tel:' + meta.phone.replace(/\s/g, '') + '">' + meta.phone + '</a>';
+    if (meta.location) h += '<span>' + meta.location + '</span>';
     ['linkedin', 'github', 'website', 'portfolio'].forEach(function (k) {
       if (meta[k]) h += '<a href="https://' + meta[k] + '">' + meta[k] + '</a>';
     });
@@ -110,9 +110,13 @@ var ResumeParser = (function () {
 
   function renderSkills(c) {
     var r = parseTableRows(c);
-    var h = '<div class="skills-grid">';
+    var h = '<div class="skills-section">';
     r.forEach(function (row) {
-      h += '<div class="label">' + row[0] + '</div><div class="value">' + row[1] + '</div>';
+      h += '<span class="skill-category">' + row[0] + ':</span>';
+      var skills = row[1].split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+      skills.forEach(function (skill) {
+        h += '<span class="skill-pill">' + skill + '</span>';
+      });
     });
     return h + '</div>';
   }
@@ -123,20 +127,31 @@ var ResumeParser = (function () {
     jobs.forEach(function (j) {
       h += '<div class="job-header"><span class="role">' + j.role + '</span><span class="date">' + j.date + '</span></div>';
       h += '<div class="company">' + j.company + '</div>';
+      h += '<div class="projects">';
       j.projects.forEach(function (p) {
         h += '<div class="proj"><div class="proj-title">' + p.title + '</div><div class="proj-desc">' + boldify(p.desc) + '</div></div>';
       });
+      h += '</div>';
     });
     return h;
   }
 
   function renderEdu(c) {
     var r = parseTableRows(c);
-    var h = '<table class="edu-table"><thead><tr><th>Degree</th><th>Institution</th><th>Year</th><th>Notes</th></tr></thead><tbody>';
+    var h = '<div class="edu-list">';
     r.forEach(function (row) {
-      h += '<tr><td>' + row[0] + '</td><td>' + row[1] + '</td><td>' + row[2] + '</td><td class="note">' + (row[3] || '') + '</td></tr>';
+      h += '<div class="edu-entry">';
+      h += '<div class="edu-top">';
+      h += '<span class="edu-degree">' + row[0] + '</span>';
+      if (row[2]) h += '<span class="edu-year">' + row[2] + '</span>';
+      h += '</div>';
+      var detail = [];
+      if (row[1]) detail.push(row[1]);
+      if (row[3]) detail.push(row[3]);
+      if (detail.length) h += '<div class="edu-detail">' + detail.join(' · ') + '</div>';
+      h += '</div>';
     });
-    return h + '</tbody></table>';
+    return h + '</div>';
   }
 
   function renderAch(c) {
@@ -213,9 +228,9 @@ var ResumeParser = (function () {
     if (meta.title) sb += '<div class="htitle">' + meta.title + '</div>';
 
     sb += '<div class="sb-section"><div class="sb-title">Contact</div>';
-    ['email', 'phone', 'location'].forEach(function (k) {
-      if (meta[k]) sb += '<div class="sb-item">' + meta[k] + '</div>';
-    });
+    if (meta.email) sb += '<div class="sb-item"><a href="mailto:' + meta.email + '">' + meta.email + '</a></div>';
+    if (meta.phone) sb += '<div class="sb-item"><a href="tel:' + meta.phone.replace(/\s/g, '') + '">' + meta.phone + '</a></div>';
+    if (meta.location) sb += '<div class="sb-item">' + meta.location + '</div>';
     ['linkedin', 'github'].forEach(function (k) {
       if (meta[k]) sb += '<div class="sb-item"><a href="https://' + meta[k] + '">' + meta[k].replace(/.*\//, '') + '</a></div>';
     });
@@ -268,6 +283,50 @@ var ResumeParser = (function () {
     return h;
   }
 
+  /* ── Page Break Overlay ──────────────────── */
+
+  function measureA4() {
+    // Match @page margin: 5mm — printable height = 297mm - 5mm top - 5mm bottom = 287mm
+    var probe = document.createElement('div');
+    probe.style.cssText = 'position:absolute;visibility:hidden;height:287mm;';
+    document.body.appendChild(probe);
+    var h = probe.offsetHeight;
+    document.body.removeChild(probe);
+    return h;
+  }
+
+  function updatePageBreaks() {
+    var wrapper = document.getElementById('wrapper');
+    var frame = wrapper && wrapper.querySelector('.page-frame');
+    var page = frame && frame.querySelector('.page');
+    if (!wrapper || !frame || !page) return;
+
+    // Remove old overlays and badges
+    var old = wrapper.querySelectorAll('.page-break-line, .page-count-badge');
+    for (var i = 0; i < old.length; i++) old[i].remove();
+
+    var a4h = measureA4();
+    var contentHeight = page.scrollHeight;
+    var numPages = Math.max(1, Math.ceil(contentHeight / a4h));
+
+    // Insert badge before the frame
+    var badge = document.createElement('div');
+    badge.className = 'page-count-badge' + (numPages > 1 ? ' warn' : '');
+    badge.textContent = numPages > 1
+      ? '\u26A0 Content spans ' + numPages + ' pages \u2014 trim to fit 1 page'
+      : '\u2713 Fits on 1 page';
+    frame.parentNode.insertBefore(badge, frame);
+
+    // Insert page break lines inside the frame
+    for (var p = 1; p < numPages; p++) {
+      var line = document.createElement('div');
+      line.className = 'page-break-line';
+      line.style.top = (p * a4h - 12) + 'px';
+      line.innerHTML = '<span class="page-break-label">Page ' + p + ' ends \u00B7 Page ' + (p + 1) + ' starts</span>';
+      frame.appendChild(line);
+    }
+  }
+
   /* ── Render Dispatch ───────────────────── */
 
   var renderers = {
@@ -277,74 +336,20 @@ var ResumeParser = (function () {
     minimal: renderMinimal
   };
 
-  /* ── Multi-Page A4 Layout ──────────────── */
-
-  function measureA4() {
-    var probe = document.createElement('div');
-    probe.style.cssText = 'position:absolute;visibility:hidden;height:297mm;';
-    document.body.appendChild(probe);
-    var h = probe.offsetHeight;
-    document.body.removeChild(probe);
-    return h;
-  }
-
-  function buildPages() {
-    var wrapper = document.getElementById('wrapper');
-    if (!wrapper) return;
-
-    var a4h = measureA4();
-
-    // Get all page-sheet-inner divs and measure content height
-    // We rendered content into a hidden measurer first
-    var measurer = document.createElement('div');
-    measurer.className = 't-' + currentTemplate;
-    measurer.style.cssText = 'position:absolute;visibility:hidden;width:210mm;';
-    var innerPage = document.createElement('div');
-    innerPage.className = 'page';
-    var fn = renderers[currentTemplate] || renderClassic;
-    innerPage.innerHTML = fn(parsedMeta, parsedSections);
-    measurer.appendChild(innerPage);
-    document.body.appendChild(measurer);
-
-    var totalHeight = innerPage.scrollHeight;
-    var numPages = Math.max(1, Math.ceil(totalHeight / a4h));
-
-    document.body.removeChild(measurer);
-
-    // Build page sheets
-    var html = '';
-
-    // Page count badge
-    if (numPages > 1) {
-      html += '<div class="page-count-badge warn">\u26A0 Content spans ' + numPages + ' pages \u2014 trim to fit 1 page</div>';
-    } else {
-      html += '<div class="page-count-badge">\u2713 Fits on 1 page</div>';
-    }
-
-    for (var i = 0; i < numPages; i++) {
-      html += '<div class="page-sheet">';
-      html += '<div class="page-sheet-inner" style="top:' + (-(i * a4h)) + 'px;">';
-      html += '<div class="page" id="' + (i === 0 ? 'resume' : 'resume-p' + (i + 1)) + '">';
-      html += fn(parsedMeta, parsedSections);
-      html += '</div>';
-      html += '</div>';
-      html += '<div class="page-label">Page ' + (i + 1) + ' of ' + numPages + '</div>';
-      html += '</div>';
-    }
-
-    wrapper.className = 't-' + currentTemplate;
-    wrapper.innerHTML = html;
-  }
-
   function renderToDOM() {
     var wrapper = document.getElementById('wrapper');
     if (!wrapper) return;
 
-    // Temporary loading state
     wrapper.className = 't-' + currentTemplate;
-    wrapper.innerHTML = '<div class="page-sheet"><div class="page" id="resume"><div class="status">Rendering\u2026</div></div></div>';
 
-    setTimeout(buildPages, 30);
+    var fn = renderers[currentTemplate] || renderClassic;
+    wrapper.innerHTML =
+      '<div class="page-frame">' +
+      '<div class="page">' +
+      fn(parsedMeta, parsedSections) +
+      '</div></div>';
+
+    setTimeout(updatePageBreaks, 50);
   }
 
   function parse(md) {
@@ -368,7 +373,7 @@ var ResumeParser = (function () {
         var wrapper = document.getElementById('wrapper');
         if (wrapper) {
           wrapper.innerHTML =
-            '<div class="page-sheet"><div class="page"><div class="status">' +
+            '<div class="page-frame"><div class="page"><div class="status">' +
             '<p><strong>Could not load ' + path + '</strong></p>' +
             '<p style="margin-top:8px;font-size:12px;color:var(--light);">' +
             'Make sure the file is in the same directory as index.html</p></div></div></div>';

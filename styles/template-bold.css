@@ -1,8 +1,15 @@
-.t-bold .page { overflow: hidden; padding: 0; }
+.t-bold .page {
+  padding: 0;
+  overflow: visible;
+}
 
 .t-bold .bold-header {
-  background: var(--accent); color: #fff;
-  padding: 28px 36px; display: flex; align-items: center; gap: 20px;
+  background: var(--accent);
+  color: #fff;
+  padding: 28px 36px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 .t-bold .bold-header.no-img { display: block; }
 .t-bold .bold-header h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
@@ -12,7 +19,7 @@
 .t-bold .bold-header .avatar { border-color: rgba(255,255,255,0.5); }
 .t-bold .bold-header .avatar-placeholder { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.4); }
 
-.t-bold .bold-body { padding: 24px 36px; }
+.t-bold .bold-body { padding: 24px 36px; overflow: visible; }
 .t-bold .bold-body .section { margin-top: 14px; }
 .t-bold .bold-body .section:first-child { margin-top: 0; }
 .t-bold .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding-bottom: 4px; border-bottom-width: 2.5px; }

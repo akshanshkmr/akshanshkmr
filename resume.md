@@ -18,7 +18,7 @@ Senior Software Engineer with 6 years at D. E. Shaw building high-reliability in
 | Data & Visualization | Pandas, Plotly, Streamlit |
 | AI & Search | RAG, FAISS, Claude SDK |
 | Databases | MongoDB, SQL |
-| Testing | Cypress (2,000+ automated tests) |
+| Testing | Cypress |
 | Infrastructure | Linux, Docker, Git, Kafka, CI/CD|
 
 # Experience
