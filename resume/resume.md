@@ -1,74 +1,58 @@
 ---
-layout: default
-title: Akshansh Kumar - Resume
+name: Akshansh Kumar
+title: Senior Software Engineer
+email: akshanshkmr821@gmail.com
+phone: +91 8800319173
+location: Ghaziabad, India
+linkedin: linkedin.com/in/akshanshkmr
+github: github.com/akshanshkmr
 ---
 
-# Akshansh Kumar
-**Software Engineer**
-- Email: akshanshkmr821@gmail.com
-- Phone: +918800319173
-- Location: Ghaziabad, India
-- LinkedIn: [linkedin.com/in/akshanshkmr](https://linkedin.com/in/akshanshkmr)
-- GitHub: [github.com/akshanshkmr](https://github.com/akshanshkmr)
+# Summary
 
----
+Senior Software Engineer with 6 years at D. E. Shaw building high-reliability internal platforms for the firm's Risk team. I own the performance attribution tool — used by risk analysts to aid in hedging decisions — and build systems that PMs, and operations engineers depend on daily. Mentored 3 engineers and thrive in high-stakes environments where correctness and speed both matter.
 
-## Summary
-Software Engineer with **5+ years** of expertise building full-stack applications with Python and React. At D. E. Shaw, I develop and maintain mission-critical tools for the firm's **risk team**, focusing on enhancing reliability, operational efficiency and supporting quants. Passionate about solving complex problems in high-stakes environments.
+# Skills
 
----
+| Languages & Frameworks | Python, FastAPI, JavaScript, ReactJS |
+| Data & Visualization | Pandas, Plotly, Streamlit |
+| AI & Search | RAG, FAISS, GPT-4.5, Claude SDK |
+| Databases | MongoDB, SQL |
+| Testing | Cypress (2,000+ automated tests) |
+| Infrastructure | Linux, Docker, Git, Kafka, CI/CD|
 
-## Technical Skills
-- **Backend:** Python, FastAPI
-- **Frontend:** ReactJS, JavaScript
-- **Data & Visualization:** Pandas, Plotly, Streamlit
-- **Databases:** MongoDB, FAISS
-- **AI Tools & Technologies:** RAG, Claude SDK
-- **Testing:** Cypress
-- **DevOps & Tools:** Git, Docker, Linux, CI/CD
+# Experience
 
----
+## Senior Member, Tech | D. E. Shaw India Pvt. Ltd. · Gurugram, India | Aug 2020 – Present
 
-## Work Experience
+### AI-Powered Knowledge Assistant
+Designed and built a RAG-based chat assistant over the Risk team's Python codebase using FAISS and GPT-4.5 on internal cloud. Implemented module-wise chunking with a search optimizer that routes queries to relevant code modules instead of a monolithic index, reducing hallucinations and improving answer quality. Cut new-member onboarding time by ~30%.
 
-### Senior Member, Tech
-**D. E. Shaw India Pvt. Ltd.** | Gurugram, India | 08/2020 - Present
+### Data Validation & Monitoring Framework
+Built an automated daily validation framework for the firm's performance attribution tool — used by risk analysts to support hedging decisions. Monitors PnL, returns, exposures, and derived metrics across multiple portfolios; checks for nulls, zero-values, schema violations, and flags derived stats breaching historical sigma thresholds. On failure, automatically drills down from aggregate to position-level to isolate root causes, eliminating ~50% of manual quant debugging effort.
 
-- Built a knowledge-sharing chat assistant using RAG + Claude SDK over the Risk Team's internal codebase and documentation, **reducing new member onboarding time by 30%**.
-- Developed a data validation framework with automated daily monitoring for firmwide performance attribution numbers, **reducing Quant debugging time by 50%**.
-- Led development of a Session Replay tool for a JavaScript framework that captures and replays user sessions with video-like playback and debug data, **eliminating manual bug reporting and significantly reducing reproduction time**.
-- Built a selective CI/CD pipeline that runs only tests related to modified files, **significantly reducing PR test cycle time and improving development velocity**.
-- Developed a performance tracking application to monitor per-task CPU and memory usage across the server grid, **enabling better resource allocation and cost efficiency**.
-- Automated end-to-end testing with Cypress across all critical user flows, **reducing manual QA effort by 80%** and improving release confidence.
-- Built a Streamlit workflow management application for Operations Engineers consolidating task management and daily metrics into a single platform, **measurably boosting team productivity**.
+### Session Replay & AI Debugging Platform
+Led a team of 3 to architect and build a session replay tool for an internal JS framework. Uses RRWeb's mutation-observer-based capture for video-like playback with debug telemetry. Integrated AI capabilities: session summarization, user journey mapping, and automated Cypress test generation. Originated as the **winning entry in the 2024 firm-wide hackathon**, then productionized.
 
----
+### Firmwide Workflow & Metrics Platform
+Built a Streamlit-based platform now adopted by 15+ teams firm-wide. Serves as a centralized dashboard for backend, frontend, and performance test metrics. Used daily by operations engineers for task management and by PMs for cross-team visibility.
 
-## Projects and Open Source Contributions
+### Server Performance Tracker
+Developed a monitoring application tracking per-task CPU and memory usage across thousands of servers spanning QA, production, and experimental environments across IND/NYC sites. Identified underutilized resources, enabling the Risk team to reclaim 30 CPUs and improve cost efficiency.
 
-### Custom Streamlit Components
-Identified gaps in the Streamlit open-source ecosystem for internal tooling needs. Designed, built, and published custom components to fill these gaps and contributed them back to the community.
+### End-to-End Test Automation
+Automated 2,000+ Cypress tests across all critical user flows, compressing release sanity cycles from 1 week to 2 days and reducing manual QA effort by ~80%.
 
----
+# Education
 
-## Education
+| M.Tech, AI/ML (GenAI) | BITS Pilani | 2025 – Present | |
+| MCA | Amity University | 2021 – 2022 | CGPA: 8.55 |
+| BCA | Amity University | 2017 – 2020 | CGPA: 9.0 · Bronze Medal |
 
-### Masters of Technology (M. Tech)
-**BITS Pilani** | 10/2025 - Present
+# Achievements
 
-### Masters of Computer Applications (MCA)
-**Amity University** | 09/2021 - 10/2022
-- CGPA: 8.55
+- 1st Place, D. E. Shaw Firm-wide Hackathon | 2024
+- 1st Place, D. E. Shaw QTE Hackathon | 2021
+- Completed Google Foobar Challenge | 2022
+- Google Bug Hunter Hall of Fame | 2019
 
-### Bachelor of Computer Applications (BCA)
-**Amity University** | 07/2017 - 06/2020
-- CGPA: 9.0
-- Awarded with Bronze Medal for Academic Excellence.
-
----
-
-## Achievements
-- Won First Prize in DE Shaw Firm-wide Hackathon (2024)
-- Completed Google Foobar Challenge (2022)
-- Won First Prize in DE Shaw QTE Hackathon (2021)
-- Honored in Google Bug Hunter Hall of Fame (11/2019)
