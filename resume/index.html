@@ -5,9 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Akshansh Kumar — Resume</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="template.css">
+
+  <!-- Base styles + all template variants -->
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/template-classic.css">
+  <link rel="stylesheet" href="styles/template-sidebar.css">
+  <link rel="stylesheet" href="styles/template-bold.css">
+  <link rel="stylesheet" href="styles/template-minimal.css">
+
   <style>
-    /* ── Toolbar (lives in index.html since it's UI chrome, not the resume) ── */
+    /* ── Toolbar (UI chrome — not part of resume) ── */
     .toolbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: center; align-items: center; gap: 14px;
@@ -27,6 +34,11 @@
     .toolbar button.primary {
       background: var(--accent); color: #fff; border-color: transparent;
     }
+    .toolbar select {
+      font-family: inherit; font-size: 12px; font-weight: 600;
+      padding: 7px 10px; border-radius: 6px; cursor: pointer;
+      border: 1px solid var(--border); background: var(--input-bg); color: var(--text);
+    }
     .toolbar .color-wrap {
       position: relative; width: 26px; height: 26px;
       border-radius: 6px; overflow: hidden; border: 2px solid var(--accent);
@@ -45,12 +57,28 @@
     <div class="toolbar-group">
       <button class="primary" data-action="pdf">📄 Download PDF</button>
     </div>
+
     <div class="divider"></div>
+
+    <div class="toolbar-group">
+      <span class="toolbar-label">Template</span>
+      <select data-action="template" id="tplSelect">
+        <option value="classic">Classic</option>
+        <option value="sidebar">Sidebar</option>
+        <option value="bold">Bold</option>
+        <option value="minimal">Minimal</option>
+      </select>
+    </div>
+
+    <div class="divider"></div>
+
     <div class="toolbar-group">
       <span class="toolbar-label">Theme</span>
       <button data-action="theme" id="themeBtn">🌙 Dark</button>
     </div>
+
     <div class="divider"></div>
+
     <div class="toolbar-group">
       <span class="toolbar-label">Accent</span>
       <div class="color-wrap" id="colorPreview">
@@ -61,8 +89,10 @@
   </div>
 
   <!-- ── Resume Container ─────────────────────── -->
-  <div class="page" id="resume">
-    <div class="status">Loading resume.md…</div>
+  <div id="wrapper" class="t-classic">
+    <div class="page" id="resume">
+      <div class="status">Loading resume.md…</div>
+    </div>
   </div>
 
   <!-- ── Scripts ──────────────────────────────── -->

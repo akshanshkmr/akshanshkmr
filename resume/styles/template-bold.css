@@ -1,0 +1,64 @@
+/* ══════════════════════════════════════════
+   TEMPLATE: Bold
+   Colored header banner, strong typography
+   ══════════════════════════════════════════ */
+
+   .t-bold .page {
+    overflow: hidden;
+    padding: 0;
+  }
+  
+  /* ── Header Banner ───────────────────────── */
+  .t-bold .bold-header {
+    background: var(--accent);
+    color: #fff;
+    padding: 28px 36px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .t-bold .bold-header.no-img { display: block; }
+  
+  .t-bold .bold-header h1 {
+    font-size: 24px; font-weight: 700; letter-spacing: -0.5px;
+  }
+  .t-bold .bold-header .htitle {
+    font-size: 12px; opacity: 0.85; margin-top: 2px;
+  }
+  
+  /* ── Contact in Banner ───────────────────── */
+  .t-bold .bold-header .contact {
+    margin-top: 10px; display: flex; flex-wrap: wrap;
+    gap: 4px 14px; font-size: 10px; color: rgba(255,255,255,0.8);
+  }
+  .t-bold .bold-header .contact a {
+    color: #fff; text-decoration: none; font-weight: 500;
+  }
+  
+  /* ── Avatar overrides for white bg ───────── */
+  .t-bold .bold-header .avatar {
+    border-color: rgba(255,255,255,0.5);
+  }
+  .t-bold .bold-header .avatar-placeholder {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.4);
+  }
+  
+  /* ── Body ────────────────────────────────── */
+  .t-bold .bold-body { padding: 24px 36px; }
+  .t-bold .bold-body .section { margin-top: 14px; }
+  .t-bold .bold-body .section:first-child { margin-top: 0; }
+  
+  /* ── Section title override ──────────────── */
+  .t-bold .section-title {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    padding-bottom: 4px;
+    border-bottom-width: 2.5px;
+  }
+  
+  /* ── Print: force banner color ───────────── */
+  @media print {
+    .t-bold .bold-header {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }

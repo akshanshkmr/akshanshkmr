@@ -1,23 +1,25 @@
 /**
  * Resume Toolbar Controls
  *
- * Provides theme toggle, accent color picker, and PDF download.
+ * Theme toggle, accent color picker, template switcher.
  * Persists preferences to localStorage.
  *
- * Expects this HTML structure in the page:
- *
- *   <div class="toolbar">
- *     <button class="primary" data-action="pdf">📄 Download PDF</button>
- *     <button data-action="theme" id="themeBtn">🌙 Dark</button>
- *     <input  data-action="accent" type="color" id="accentPicker">
- *     <button data-action="reset-accent">Reset</button>
- *   </div>
+ * Expects data-action attributes on toolbar elements:
+ *   data-action="pdf"            → window.print()
+ *   data-action="theme"          → toggle dark/light
+ *   data-action="accent"         → color input
+ *   data-action="reset-accent"   → reset to default
+ *   data-action="template"       → <select> for template
  */
 
 const Toolbar = (() => {
 
     const DEFAULT_ACCENT = '#2563eb';
-    const KEYS = { theme: 'resume-theme', accent: 'resume-accent' };
+    const KEYS = {
+      theme: 'resume-theme',
+      accent: 'resume-accent',
+      template: 'resume-template',
+    };
   
     // ── Theme ────────────────────────────────────
   
@@ -55,6 +57,21 @@ const Toolbar = (() => {
       setAccent(DEFAULT_ACCENT);
     }
   
+    // ── Template ─────────────────────────────────
+  
+    function getTemplate() {
+      return localStorage.getItem(KEYS.template) || 'classic';
+    }
+  
+    function setTemplate(tpl) {
+      localStorage.setItem(KEYS.template, tpl);
+      const select = document.getElementById('tplSelect');
+      if (select) select.value = tpl;
+      if (typeof ResumeParser !== 'undefined') {
+        ResumeParser.setTemplate(tpl);
+      }
+    }
+  
     // ── PDF ──────────────────────────────────────
   
     function downloadPDF() {
@@ -64,36 +81,33 @@ const Toolbar = (() => {
     // ── Init ─────────────────────────────────────
   
     function init() {
-      // Apply saved preferences
       applyTheme(getTheme());
       setAccent(getAccent());
   
-      // Bind event listeners via data-action attributes
+      const savedTpl = getTemplate();
+      const select = document.getElementById('tplSelect');
+      if (select) select.value = savedTpl;
+      if (typeof ResumeParser !== 'undefined') {
+        ResumeParser.setTemplate(savedTpl);
+      }
+  
       document.querySelectorAll('[data-action]').forEach(el => {
         const action = el.getAttribute('data-action');
   
-        if (action === 'pdf') {
-          el.addEventListener('click', downloadPDF);
-        }
-        else if (action === 'theme') {
-          el.addEventListener('click', toggleTheme);
-        }
-        else if (action === 'accent') {
-          el.addEventListener('input', (e) => setAccent(e.target.value));
-        }
-        else if (action === 'reset-accent') {
-          el.addEventListener('click', resetAccent);
-        }
+        if (action === 'pdf')           el.addEventListener('click', downloadPDF);
+        else if (action === 'theme')    el.addEventListener('click', toggleTheme);
+        else if (action === 'accent')   el.addEventListener('input', e => setAccent(e.target.value));
+        else if (action === 'reset-accent') el.addEventListener('click', resetAccent);
+        else if (action === 'template') el.addEventListener('change', e => setTemplate(e.target.value));
       });
     }
   
-    // Auto-init when DOM is ready
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);
     } else {
       init();
     }
   
-    return { toggleTheme, setAccent, resetAccent, downloadPDF };
+    return { toggleTheme, setAccent, resetAccent, setTemplate, downloadPDF };
   
   })();

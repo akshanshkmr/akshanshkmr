@@ -1,0 +1,71 @@
+/* ══════════════════════════════════════════
+   TEMPLATE: Sidebar
+   Two-column: dark sidebar + main content
+   Skills & Education live in the sidebar
+   ══════════════════════════════════════════ */
+
+   .t-sidebar .page {
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    overflow: hidden;
+    min-height: 600px;
+    padding: 0;
+  }
+  
+  /* ── Sidebar ─────────────────────────────── */
+  .t-sidebar .sidebar {
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 28px 20px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .t-sidebar .sidebar .sb-avatar { margin-bottom: 14px; }
+  .t-sidebar .sidebar .sb-avatar .avatar,
+  .t-sidebar .sidebar .sb-avatar .avatar-placeholder {
+    border-color: var(--accent);
+  }
+  .t-sidebar .sidebar h1 {
+    font-size: 18px; font-weight: 700; line-height: 1.2;
+    margin-bottom: 2px; text-align: center;
+  }
+  .t-sidebar .sidebar .htitle {
+    font-size: 10.5px; color: var(--sidebar-muted);
+    margin-bottom: 16px; font-weight: 500; text-align: center;
+  }
+  
+  /* ── Sidebar Sections ────────────────────── */
+  .t-sidebar .sidebar .sb-section {
+    margin-bottom: 14px; width: 100%;
+  }
+  .t-sidebar .sidebar .sb-title {
+    font-size: 9.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--accent); margin-bottom: 6px; opacity: 0.9;
+  }
+  .t-sidebar .sidebar .sb-item {
+    font-size: 9.5px; color: var(--sidebar-text);
+    margin-bottom: 3px; line-height: 1.4;
+  }
+  .t-sidebar .sidebar .sb-item a {
+    color: var(--accent); text-decoration: none;
+  }
+  .t-sidebar .sidebar .sb-item-label { font-weight: 600; }
+  .t-sidebar .sidebar .sb-item-value { color: var(--sidebar-muted); }
+  
+  /* ── Main Content ────────────────────────── */
+  .t-sidebar .main { padding: 28px 30px; }
+  .t-sidebar .main .section { margin-top: 14px; }
+  .t-sidebar .main .section:first-child { margin-top: 0; }
+  
+  /* ── Print: force sidebar colors ─────────── */
+  @media print {
+    .t-sidebar .sidebar {
+      background: #1e293b !important;
+      color: #e2e8f0 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .t-sidebar .sidebar .sb-item { color: #e2e8f0 !important; }
+    .t-sidebar .sidebar .sb-item-value { color: #94a3b8 !important; }
+    .t-sidebar .sidebar .htitle { color: #94a3b8 !important; }
+  }

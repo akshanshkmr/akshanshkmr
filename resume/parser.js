@@ -1,17 +1,23 @@
 /**
- * Resume Markdown Parser & Renderer
+ * Resume Markdown Parser & Multi-Template Renderer
  *
- * Parses a resume.md with frontmatter + sections and renders
- * it into the #resume container. Any section not in the known
- * list is rendered generically (list, table, or paragraph).
+ * Parses resume.md (frontmatter + sections) and renders
+ * into #resume using one of: classic, sidebar, bold.
  *
  * Usage:
- *   ResumeParser.load('resume.md');           // fetch & render
- *   ResumeParser.renderFromString(mdString);  // render directly
+ *   ResumeParser.load('resume.md');
+ *   ResumeParser.renderFromString(mdString);
+ *   ResumeParser.setTemplate('sidebar');
+ *   ResumeParser.setImageOverride(dataUrl);  // from file upload
  */
 
 const ResumeParser = (() => {
 
+    let currentTemplate = 'classic';
+    let parsedMeta = {};
+    let parsedSections = [];
+    let imageOverride = null;   // data URL from toolbar upload
+  
     // ── Helpers ──────────────────────────────────
   
     function parseFrontmatter(md) {
@@ -54,8 +60,7 @@ const ResumeParser = (() => {
         if (/^## /.test(l)) {
           const p = l.slice(3).split('|').map(s => s.trim());
           job = { role: p[0], company: p[1] || '', date: p[2] || '', projects: [] };
-          jobs.push(job);
-          proj = null;
+          jobs.push(job); proj = null;
         } else if (/^### /.test(l) && job) {
           proj = { title: l.slice(4), desc: [] };
           job.projects.push(proj);
@@ -80,124 +85,214 @@ const ResumeParser = (() => {
       return str.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     }
   
-    // ── Renderer ─────────────────────────────────
+    function getInitials(name) {
+      return (name || '').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+    }
   
-    function render(md) {
-      const [meta, body] = parseFrontmatter(md);
-      const sections = parseSections(body);
+    // ── Avatar ───────────────────────────────────
+  
+    function getImageSrc(meta) {
+      return imageOverride || meta.image || null;
+    }
+  
+    function avatarHTML(meta, sizeClass) {
+      const src = getImageSrc(meta);
+      if (src) {
+        return `<img class="avatar ${sizeClass || ''}" src="${src}" alt="Photo">`;
+      }
+      const ini = getInitials(meta.name);
+      if (ini) {
+        return `<div class="avatar-placeholder ${sizeClass || ''}">${ini}</div>`;
+      }
+      return '';
+    }
+  
+    function hasAvatar(meta) {
+      return !!(getImageSrc(meta) || getInitials(meta.name));
+    }
+  
+    // ── Shared Renderers ─────────────────────────
+  
+    function renderContact(meta) {
       let h = '';
-  
-      // Header
-      h += `<div class="header"><h1>${meta.name || 'Your Name'}</h1>`;
-      if (meta.title) h += `<div class="htitle">${meta.title}</div>`;
-      h += `<div class="contact">`;
       ['email', 'phone', 'location'].forEach(k => {
         if (meta[k]) h += `<span>${meta[k]}</span>`;
       });
       ['linkedin', 'github', 'website', 'portfolio'].forEach(k => {
         if (meta[k]) h += `<a href="https://${meta[k]}">${meta[k]}</a>`;
       });
-      h += `</div></div>`;
+      return h;
+    }
   
-      // Sections — render in order of appearance
-      sections.forEach(sec => {
-        const key = sec.title.toLowerCase();
+    function renderSkills(c) {
+      const r = parseTableRows(c);
+      let h = '<div class="skills-grid">';
+      r.forEach(r => { h += `<div class="label">${r[0]}</div><div class="value">${r[1]}</div>`; });
+      return h + '</div>';
+    }
   
-        if (key === 'summary') {
-          h += `<div class="section">
-            <div class="section-title">Summary</div>
-            <div class="summary">${boldify(sec.content)}</div>
-          </div>`;
-        }
-        else if (key === 'skills') {
-          const rows = parseTableRows(sec.content);
-          h += `<div class="section"><div class="section-title">Technical Skills</div>
-            <div class="skills-grid">`;
-          rows.forEach(r => {
-            h += `<div class="label">${r[0]}</div><div class="value">${r[1]}</div>`;
-          });
-          h += `</div></div>`;
-        }
-        else if (key === 'experience') {
-          const jobs = parseExperience(sec.content);
-          h += `<div class="section"><div class="section-title">Experience</div>`;
-          jobs.forEach(j => {
-            h += `<div class="job-header">
-              <span class="role">${j.role}</span>
-              <span class="date">${j.date}</span>
-            </div>`;
-            h += `<div class="company">${j.company}</div>`;
-            j.projects.forEach(p => {
-              h += `<div class="proj">
-                <div class="proj-title">${p.title}</div>
-                <div class="proj-desc">${boldify(p.desc)}</div>
-              </div>`;
-            });
-          });
-          h += `</div>`;
-        }
-        else if (key === 'education') {
-          const rows = parseTableRows(sec.content);
-          h += `<div class="section"><div class="section-title">Education</div>
-            <table class="edu-table"><thead><tr>
-              <th>Degree</th><th>Institution</th><th>Year</th><th>Notes</th>
-            </tr></thead><tbody>`;
-          rows.forEach(r => {
-            h += `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td>
-              <td class="note">${r[3] || ''}</td></tr>`;
-          });
-          h += `</tbody></table></div>`;
-        }
-        else if (key === 'achievements') {
-          const items = parseListItems(sec.content);
-          h += `<div class="section"><div class="section-title">Achievements</div>
-            <div class="ach-grid">`;
-          items.forEach(a => {
-            h += `<div class="ach-item">${boldify(a.text)}
-              <span class="ach-year">${a.year}</span></div>`;
-          });
-          h += `</div></div>`;
-        }
-        else {
-          // Generic section — auto-detect format
-          h += `<div class="section"><div class="section-title">${sec.title}</div>`;
-          const li = parseListItems(sec.content);
-          const tr = parseTableRows(sec.content);
-  
-          if (li.length > 0) {
-            h += `<div class="generic-list">`;
-            li.forEach(i => {
-              h += `<div class="g-item">${boldify(i.text)}`;
-              if (i.year) h += ` <span class="g-year">${i.year}</span>`;
-              h += `</div>`;
-            });
-            h += `</div>`;
-          } else if (tr.length > 0) {
-            h += `<div class="skills-grid">`;
-            tr.forEach(r => {
-              h += `<div class="label">${r[0]}</div>
-                <div class="value">${r.slice(1).join(' · ')}</div>`;
-            });
-            h += `</div>`;
-          } else {
-            h += `<div class="generic-para">${boldify(sec.content)}</div>`;
-          }
-          h += `</div>`;
-        }
+    function renderExp(c) {
+      const jobs = parseExperience(c); let h = '';
+      jobs.forEach(j => {
+        h += `<div class="job-header"><span class="role">${j.role}</span><span class="date">${j.date}</span></div>`;
+        h += `<div class="company">${j.company}</div>`;
+        j.projects.forEach(p => {
+          h += `<div class="proj"><div class="proj-title">${p.title}</div><div class="proj-desc">${boldify(p.desc)}</div></div>`;
+        });
       });
+      return h;
+    }
   
-      document.getElementById('resume').innerHTML = h;
+    function renderEdu(c) {
+      const r = parseTableRows(c);
+      let h = '<table class="edu-table"><thead><tr><th>Degree</th><th>Institution</th><th>Year</th><th>Notes</th></tr></thead><tbody>';
+      r.forEach(r => {
+        h += `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td class="note">${r[3] || ''}</td></tr>`;
+      });
+      return h + '</tbody></table>';
+    }
+  
+    function renderAch(c) {
+      const items = parseListItems(c);
+      let h = '<div class="ach-grid">';
+      items.forEach(a => {
+        h += `<div class="ach-item">${boldify(a.text)} <span class="ach-year">${a.year}</span></div>`;
+      });
+      return h + '</div>';
+    }
+  
+    function renderGeneric(c) {
+      const li = parseListItems(c), tr = parseTableRows(c);
+      if (li.length) {
+        let h = '<div class="generic-list">';
+        li.forEach(i => {
+          h += `<div class="g-item">${boldify(i.text)}${i.year ? ` <span class="g-year">${i.year}</span>` : ''}</div>`;
+        });
+        return h + '</div>';
+      }
+      if (tr.length) {
+        let h = '<div class="skills-grid">';
+        tr.forEach(r => {
+          h += `<div class="label">${r[0]}</div><div class="value">${r.slice(1).join(' · ')}</div>`;
+        });
+        return h + '</div>';
+      }
+      return `<div class="generic-para">${boldify(c)}</div>`;
+    }
+  
+    const ST = t => `<div class="section-title">${t}</div>`;
+  
+    function renderSections(sections, exclude) {
+      const skip = (exclude || []).map(s => s.toLowerCase());
+      let h = '';
+      sections.forEach(sec => {
+        const k = sec.title.toLowerCase();
+        if (skip.includes(k)) return;
+  
+        if (k === 'summary')      h += `<div class="section">${ST('Summary')}<div class="summary">${boldify(sec.content)}</div></div>`;
+        else if (k === 'skills')  h += `<div class="section">${ST('Technical Skills')}${renderSkills(sec.content)}</div>`;
+        else if (k === 'experience') h += `<div class="section">${ST('Experience')}${renderExp(sec.content)}</div>`;
+        else if (k === 'education')  h += `<div class="section">${ST('Education')}${renderEdu(sec.content)}</div>`;
+        else if (k === 'achievements') h += `<div class="section">${ST('Achievements')}${renderAch(sec.content)}</div>`;
+        else h += `<div class="section">${ST(sec.title)}${renderGeneric(sec.content)}</div>`;
+      });
+      return h;
+    }
+  
+    // ── Template: Classic ────────────────────────
+  
+    function renderClassic(meta, sections) {
+      const img = hasAvatar(meta);
+      let h = `<div class="header ${img ? '' : 'no-img'}">`;
+      if (img) h += avatarHTML(meta, '');
+      h += `<div class="header-text"><h1>${meta.name || ''}</h1>`;
+      if (meta.title) h += `<div class="htitle">${meta.title}</div>`;
+      h += `<div class="contact">${renderContact(meta)}</div></div></div>`;
+      h += renderSections(sections);
+      return h;
+    }
+  
+    // ── Template: Sidebar ────────────────────────
+  
+    function renderSidebar(meta, sections) {
+      const skillsSec = sections.find(s => s.title.toLowerCase() === 'skills');
+      const eduSec = sections.find(s => s.title.toLowerCase() === 'education');
+  
+      let sb = '<div class="sidebar">';
+      sb += `<div class="sb-avatar">${avatarHTML(meta, 'avatar-lg')}</div>`;
+      sb += `<h1>${meta.name || ''}</h1>`;
+      if (meta.title) sb += `<div class="htitle">${meta.title}</div>`;
+  
+      sb += '<div class="sb-section"><div class="sb-title">Contact</div>';
+      ['email', 'phone', 'location'].forEach(k => {
+        if (meta[k]) sb += `<div class="sb-item">${meta[k]}</div>`;
+      });
+      ['linkedin', 'github'].forEach(k => {
+        if (meta[k]) sb += `<div class="sb-item"><a href="https://${meta[k]}">${meta[k].replace(/.*\//, '')}</a></div>`;
+      });
+      sb += '</div>';
+  
+      if (skillsSec) {
+        sb += '<div class="sb-section"><div class="sb-title">Skills</div>';
+        parseTableRows(skillsSec.content).forEach(r => {
+          sb += `<div class="sb-item"><div class="sb-item-label">${r[0]}</div><div class="sb-item-value">${r[1]}</div></div>`;
+        });
+        sb += '</div>';
+      }
+  
+      if (eduSec) {
+        sb += '<div class="sb-section"><div class="sb-title">Education</div>';
+        parseTableRows(eduSec.content).forEach(r => {
+          sb += `<div class="sb-item"><div class="sb-item-label">${r[0]}</div><div class="sb-item-value">${r[1]} · ${r[2]}</div></div>`;
+        });
+        sb += '</div>';
+      }
+      sb += '</div>';
+  
+      let main = `<div class="main">${renderSections(sections, ['skills', 'education'])}</div>`;
+      return sb + main;
+    }
+  
+    // ── Template: Bold ───────────────────────────
+  
+    function renderBold(meta, sections) {
+      const img = hasAvatar(meta);
+      let h = `<div class="bold-header ${img ? '' : 'no-img'}">`;
+      if (img) h += avatarHTML(meta, 'avatar-lg');
+      h += `<div><h1>${meta.name || ''}</h1>`;
+      if (meta.title) h += `<div class="htitle">${meta.title}</div>`;
+      h += `<div class="contact">${renderContact(meta)}</div></div></div>`;
+      h += `<div class="bold-body">${renderSections(sections)}</div>`;
+      return h;
+    }
+  
+    // ── Render Dispatch ──────────────────────────
+  
+    const renderers = { classic: renderClassic, sidebar: renderSidebar, bold: renderBold };
+  
+    function renderToDOM() {
+      const wrapper = document.getElementById('wrapper');
+      const el = document.getElementById('resume');
+      if (!wrapper || !el) return;
+  
+      wrapper.className = `t-${currentTemplate}`;
+      const fn = renderers[currentTemplate] || renderClassic;
+      el.innerHTML = fn(parsedMeta, parsedSections);
+    }
+  
+    function parse(md) {
+      const [meta, body] = parseFrontmatter(md);
+      parsedMeta = meta;
+      parsedSections = parseSections(body);
+      renderToDOM();
     }
   
     // ── Public API ───────────────────────────────
   
     function load(path) {
       fetch(path)
-        .then(r => {
-          if (!r.ok) throw new Error(`Could not load ${path}`);
-          return r.text();
-        })
-        .then(render)
+        .then(r => { if (!r.ok) throw new Error(); return r.text(); })
+        .then(parse)
         .catch(() => {
           document.getElementById('resume').innerHTML =
             `<div class="status">
@@ -209,9 +304,21 @@ const ResumeParser = (() => {
         });
     }
   
+    function setTemplate(tpl) {
+      if (renderers[tpl]) { currentTemplate = tpl; renderToDOM(); }
+    }
+  
+    function setImageOverride(dataUrl) {
+      imageOverride = dataUrl;
+      renderToDOM();
+    }
+  
     return {
       load,
-      renderFromString: render,
+      renderFromString: parse,
+      setTemplate,
+      setImageOverride,
+      getTemplate: () => currentTemplate,
     };
   
   })();
