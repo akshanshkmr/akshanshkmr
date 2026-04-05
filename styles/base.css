@@ -1,163 +1,223 @@
-/* ── Theme Variables ──────────────────────── */
 :root {
-    --accent: #2563eb;
-    --bg: #f0f2f5;
-    --page-bg: #fff;
-    --text: #1a1a1a;
-    --text-secondary: #333;
-    --muted: #555;
-    --light: #888;
-    --border: #e0e0e0;
-    --border-light: #f0f0f0;
-    --bar-bg: #fff;
-    --bar-border: #e5e7eb;
-    --input-bg: #f5f5f5;
-    --shadow: rgba(0,0,0,0.07);
-    --page-w: 794px;
-    --sidebar-bg: #1e293b;
-    --sidebar-text: #e2e8f0;
-    --sidebar-muted: #94a3b8;
-    --sidebar-w: 210px;
+  --accent: #2563eb;
+  --bg: #f0f2f5;
+  --page-bg: #fff;
+  --text: #1a1a1a;
+  --text-secondary: #333;
+  --muted: #555;
+  --light: #888;
+  --border: #e0e0e0;
+  --border-light: #f0f0f0;
+  --bar-bg: #fff;
+  --bar-border: #e5e7eb;
+  --input-bg: #f5f5f5;
+  --shadow: rgba(0,0,0,0.07);
+  --page-w: 794px;
+  --sidebar-bg: #1e293b;
+  --sidebar-text: #e2e8f0;
+  --sidebar-muted: #94a3b8;
+  --sidebar-w: 210px;
+}
+
+[data-theme="dark"] {
+  --bg: #111118;
+  --page-bg: #1a1a24;
+  --text: #e4e4e8;
+  --text-secondary: #c0c0c8;
+  --muted: #9a9aa8;
+  --light: #6e6e7a;
+  --border: #2e2e3a;
+  --border-light: #252530;
+  --bar-bg: #16161e;
+  --bar-border: #2a2a36;
+  --input-bg: #22222e;
+  --shadow: rgba(0,0,0,0.3);
+  --sidebar-bg: #0f172a;
+  --sidebar-text: #cbd5e1;
+  --sidebar-muted: #64748b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 10.5px;
+  line-height: 1.5;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Avatar */
+.avatar {
+  width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
+  border: 2.5px solid var(--accent); flex-shrink: 0;
+}
+.avatar-placeholder {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 700; flex-shrink: 0;
+  border: 2.5px solid var(--accent);
+}
+.avatar-sm { width: 56px; height: 56px; font-size: 18px; }
+.avatar-lg { width: 90px; height: 90px; font-size: 30px; border-width: 3px; }
+
+/* Page */
+.page {
+  max-width: var(--page-w);
+  margin: 72px auto 40px;
+  background: var(--page-bg);
+  border-radius: 6px;
+  box-shadow: 0 1px 8px var(--shadow);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Section */
+.section { margin-top: 14px; }
+.section-title {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.2px;
+  color: var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  padding-bottom: 3px; margin-bottom: 8px;
+}
+
+/* Content blocks */
+.summary { font-size: 10.5px; color: var(--text-secondary); line-height: 1.55; }
+
+.skills-grid { display: grid; grid-template-columns: 155px 1fr; gap: 2px 12px; font-size: 10px; }
+.skills-grid .label { font-weight: 600; color: var(--text-secondary); padding: 2px 0; }
+.skills-grid .value { color: var(--muted); padding: 2px 0; }
+
+.job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+.job-header .role { font-weight: 700; font-size: 11px; color: var(--text); }
+.job-header .date { font-size: 10px; color: var(--light); white-space: nowrap; }
+.company { font-size: 10px; color: var(--muted); margin-bottom: 8px; }
+.proj { margin-bottom: 8px; }
+.proj:last-child { margin-bottom: 0; }
+.proj-title { font-weight: 600; font-size: 10.5px; color: var(--text); }
+.proj-desc { color: var(--text-secondary); font-size: 10px; line-height: 1.5; margin-top: 1px; }
+
+.edu-table { width: 100%; border-collapse: collapse; font-size: 10px; }
+.edu-table th { text-align: left; font-weight: 600; color: var(--muted); padding: 3px 8px 3px 0; border-bottom: 1px solid var(--border); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.5px; }
+.edu-table td { padding: 4px 8px 4px 0; color: var(--text-secondary); border-bottom: 1px solid var(--border-light); }
+.edu-table td:first-child { font-weight: 500; }
+.edu-table .note { color: var(--light); font-size: 9.5px; }
+
+.ach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 24px; font-size: 10px; color: var(--text-secondary); }
+.ach-item { display: flex; align-items: baseline; gap: 6px; }
+.ach-item::before { content: '▸'; color: var(--accent); font-size: 9px; flex-shrink: 0; }
+.ach-year { color: var(--light); font-size: 9px; white-space: nowrap; }
+
+.generic-list { font-size: 10px; color: var(--text-secondary); }
+.g-item { display: flex; align-items: baseline; gap: 6px; margin-bottom: 3px; }
+.g-item::before { content: '▸'; color: var(--accent); font-size: 9px; flex-shrink: 0; }
+.g-year { color: var(--light); font-size: 9px; white-space: nowrap; }
+.generic-para { font-size: 10.5px; color: var(--text-secondary); line-height: 1.55; }
+
+.status { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 14px; }
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    margin: 0; padding: 0;
+    background: #fff !important;
+    color: #1a1a1a !important;
   }
-  
-  [data-theme="dark"] {
-    --bg: #111118;
-    --page-bg: #1a1a24;
-    --text: #e4e4e8;
-    --text-secondary: #c0c0c8;
-    --muted: #9a9aa8;
-    --light: #6e6e7a;
-    --border: #2e2e3a;
-    --border-light: #252530;
-    --bar-bg: #16161e;
-    --bar-border: #2a2a36;
-    --input-bg: #22222e;
-    --shadow: rgba(0,0,0,0.3);
-    --sidebar-bg: #0f172a;
-    --sidebar-text: #cbd5e1;
-    --sidebar-muted: #64748b;
+
+  .toolbar { display: none !important; }
+  .page-label { display: none !important; }
+  .page-count-badge { display: none !important; }
+
+  #wrapper {
+    gap: 0; padding: 0;
   }
-  
-  /* ── Reset ───────────────────────────────── */
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  
-  body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 10.5px;
-    line-height: 1.5;
-    transition: background 0.3s, color 0.3s;
+
+  .page-sheet {
+    box-shadow: none;
+    border-radius: 0;
+    background: #fff !important;
+    page-break-after: always;
+    break-after: page;
   }
-  
-  /* ── Avatar ──────────────────────────────── */
-  .avatar {
-    width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
-    border: 2.5px solid var(--accent); flex-shrink: 0;
+
+  .page-sheet:last-child {
+    page-break-after: avoid;
+    break-after: avoid;
   }
-  .avatar-placeholder {
-    width: 72px; height: 72px; border-radius: 50%;
-    background: var(--accent); color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px; font-weight: 700; flex-shrink: 0;
-    border: 2.5px solid var(--accent);
-  }
-  .avatar-sm  { width: 56px; height: 56px; font-size: 18px; }
-  .avatar-lg  { width: 90px; height: 90px; font-size: 30px; border-width: 3px; }
-  
-  /* ── Page Base ───────────────────────────── */
-  .page {
-    max-width: var(--page-w);
-    margin: 72px auto 40px;
-    background: var(--page-bg);
-    border-radius: 6px;
-    box-shadow: 0 1px 8px var(--shadow);
-    transition: background 0.3s, box-shadow 0.3s;
-  }
-  
-  /* ── Shared Section Title ────────────────── */
-  .section { margin-top: 14px; }
-  .section-title {
-    font-size: 11px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 1.2px;
-    color: var(--accent);
-    border-bottom: 1.5px solid var(--accent);
-    padding-bottom: 3px; margin-bottom: 8px;
-  }
-  
-  /* ── Summary ─────────────────────────────── */
-  .summary { font-size: 10.5px; color: var(--text-secondary); line-height: 1.55; }
-  
-  /* ── Skills Grid ─────────────────────────── */
-  .skills-grid {
-    display: grid; grid-template-columns: 155px 1fr;
-    gap: 2px 12px; font-size: 10px;
-  }
-  .skills-grid .label  { font-weight: 600; color: var(--text-secondary); padding: 2px 0; }
-  .skills-grid .value  { color: var(--muted); padding: 2px 0; }
-  
-  /* ── Experience ──────────────────────────── */
-  .job-header {
-    display: flex; justify-content: space-between;
-    align-items: baseline; margin-bottom: 4px;
-  }
-  .job-header .role { font-weight: 700; font-size: 11px; color: var(--text); }
-  .job-header .date { font-size: 10px; color: var(--light); white-space: nowrap; }
-  .company { font-size: 10px; color: var(--muted); margin-bottom: 8px; }
-  .proj      { margin-bottom: 8px; }
-  .proj:last-child { margin-bottom: 0; }
-  .proj-title { font-weight: 600; font-size: 10.5px; color: var(--text); }
-  .proj-desc  { color: var(--text-secondary); font-size: 10px; line-height: 1.5; margin-top: 1px; }
-  
-  /* ── Education Table ─────────────────────── */
-  .edu-table { width: 100%; border-collapse: collapse; font-size: 10px; }
-  .edu-table th {
-    text-align: left; font-weight: 600; color: var(--muted);
-    padding: 3px 8px 3px 0; border-bottom: 1px solid var(--border);
-    font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.5px;
-  }
-  .edu-table td {
-    padding: 4px 8px 4px 0; color: var(--text-secondary);
-    border-bottom: 1px solid var(--border-light);
-  }
-  .edu-table td:first-child { font-weight: 500; }
-  .edu-table .note { color: var(--light); font-size: 9.5px; }
-  
-  /* ── Achievements Grid ───────────────────── */
-  .ach-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 3px 24px; font-size: 10px; color: var(--text-secondary);
-  }
-  .ach-item { display: flex; align-items: baseline; gap: 6px; }
-  .ach-item::before { content: '▸'; color: var(--accent); font-size: 9px; flex-shrink: 0; }
-  .ach-year { color: var(--light); font-size: 9px; white-space: nowrap; }
-  
-  /* ── Generic Section ─────────────────────── */
-  .generic-list { font-size: 10px; color: var(--text-secondary); }
-  .g-item { display: flex; align-items: baseline; gap: 6px; margin-bottom: 3px; }
-  .g-item::before { content: '▸'; color: var(--accent); font-size: 9px; flex-shrink: 0; }
-  .g-year { color: var(--light); font-size: 9px; white-space: nowrap; }
-  .generic-para { font-size: 10.5px; color: var(--text-secondary); line-height: 1.55; }
-  
-  /* ── Status ───────────────────────────────── */
-  .status { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 14px; }
-  
-  /* ── Print ────────────────────────────────── */
-  @media print {
-    body { background: #fff !important; color: #1a1a1a !important; }
-    .toolbar { display: none !important; }
-    .page {
-      margin: 0; padding: 20px 28px;
-      box-shadow: none; border-radius: 0;
-      background: #fff !important;
-    }
-    .header h1, .job-header .role, .proj-title { color: #1a1a1a !important; }
-    .summary, .proj-desc, .edu-table td, .ach-grid,
-    .generic-list, .generic-para { color: #333 !important; }
-    .skills-grid .label { color: #333 !important; }
-    .skills-grid .value, .contact, .company { color: #555 !important; }
-    .job-header .date, .edu-table .note,
-    .ach-year, .g-year { color: #888 !important; }
-    .edu-table th { color: #555 !important; border-color: #ddd !important; }
-    .edu-table td { border-color: #eee !important; }
-  }
+
+  /* Force light colors */
+  .header h1, .job-header .role, .proj-title { color: #1a1a1a !important; }
+  .summary, .proj-desc, .edu-table td, .ach-grid, .generic-list, .generic-para { color: #333 !important; }
+  .skills-grid .label { color: #333 !important; }
+  .skills-grid .value, .contact, .company { color: #555 !important; }
+  .job-header .date, .edu-table .note, .ach-year, .g-year { color: #888 !important; }
+  .edu-table th { color: #555 !important; border-color: #ddd !important; }
+  .edu-table td { border-color: #eee !important; }
+}
+
+/* ── A4 Multi-Page Preview ────────────────── */
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 0 40px;
+}
+
+.page-sheet {
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  position: relative;
+  background: var(--page-bg);
+  border-radius: 6px;
+  box-shadow: 0 1px 8px var(--shadow);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.page-sheet-inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.page-label {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--light);
+  font-family: 'Inter', system-ui, sans-serif;
+  opacity: 0.5;
+}
+
+.page-count-badge {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  font-family: 'Inter', system-ui, sans-serif;
+  padding: 4px 0;
+}
+
+.page-count-badge.warn {
+  color: #ef4444;
+}
+
+/* The .page class is now used inside .page-sheet-inner */
+.page {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+  background: transparent;
+}
