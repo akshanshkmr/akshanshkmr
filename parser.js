@@ -270,19 +270,6 @@ var ResumeParser = (function () {
     return h;
   }
 
-  /* ── Template: Minimal ─────────────────── */
-
-  function renderMinimal(meta, sections) {
-    var img = hasAvatar(meta);
-    var h = '<div class="header ' + (img ? '' : 'no-img') + '">';
-    if (img) h += avatarHTML(meta, 'avatar-sm');
-    h += '<div class="header-text"><h1>' + (meta.name || '') + '</h1>';
-    if (meta.title) h += '<div class="htitle">' + meta.title + '</div>';
-    h += '<div class="contact">' + renderContact(meta) + '</div></div></div>';
-    h += renderSections(sections);
-    return h;
-  }
-
   /* ── Page Break Overlay ──────────────────── */
 
   function measureA4() {
@@ -333,7 +320,6 @@ var ResumeParser = (function () {
     classic: renderClassic,
     sidebar: renderSidebar,
     bold: renderBold,
-    minimal: renderMinimal
   };
 
   function renderToDOM() {
