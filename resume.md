@@ -18,8 +18,7 @@ Senior Software Engineer with 6 years at D. E. Shaw building high-reliability in
 | Data & Visualization | Pandas, Plotly, Streamlit |
 | AI & Search | RAG, FAISS, Claude SDK |
 | Databases | MongoDB, SQL |
-| Testing | Cypress |
-| Infrastructure | Linux, Docker, Git, Kafka, CI/CD|
+| Infrastructure | Linux, Docker, Git, Kafka, CI/CD |
 
 # Experience
 
@@ -40,12 +39,9 @@ Built a Streamlit-based platform now adopted by 15+ teams firm-wide. Serves as a
 ### Server Performance Tracker
 Developed a monitoring application tracking per-task CPU and memory usage across thousands of servers spanning QA, production, and experimental environments across IND/NYC sites. Identified underutilized resources, enabling the Risk team to reclaim 30 CPUs and improve cost efficiency.
 
-### End-to-End Test Automation
-Automated 2,000+ Cypress tests across all critical user flows, compressing release sanity cycles from 1 week to 2 days and reducing manual QA effort by ~80%.
-
 # Education
 
-| M.Tech, AI/ML (GenAI) | BITS Pilani | 2025 – Present | |
+| M.Tech, AI/ML | BITS Pilani | 2025 – Present |
 | MCA | Amity University | 2021 – 2022 | CGPA: 8.55 |
 | BCA | Amity University | 2017 – 2020 | CGPA: 9.0 · Bronze Medal |
 
